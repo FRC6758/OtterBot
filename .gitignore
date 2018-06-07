@@ -1,0 +1,5 @@
+/venv
+config.ini
+/res/otterpics
+/.idea
+__pycache__
