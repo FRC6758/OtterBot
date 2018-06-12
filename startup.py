@@ -5,6 +5,8 @@ from command import cmds
 from commands.ping import CommandPing
 from commands.help import CommandHelp
 from commands.otterpic import CommandOtterPic
+from commands.subotterpic import CommandSubOtterPic
+from commands.giveme import CommandGiveMe
 
 config = {}
 
@@ -27,6 +29,8 @@ client = discord.Client()
 cmds.append(CommandHelp())
 cmds.append(CommandPing())
 cmds.append(CommandOtterPic())
+cmds.append(CommandSubOtterPic())
+cmds.append(CommandGiveMe())
 print('(LOADER) Initialized {} commands'.format(len(cmds)))
 
 @client.event
@@ -45,6 +49,8 @@ async def on_message(message):
     handler_bf = ctime()
     msg = message.content
     if not msg.startswith('!'):
+        return
+    if message.server is None:
         return
     args = msg.split()
     cmd = args[0]
