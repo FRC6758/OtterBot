@@ -20,7 +20,7 @@ with open('config.ini') as f:
             continue
         varname = parts[0]
         varvalue = parts[1]
-        config[varname] = varvalue
+        config[varname] = varvalue.rstrip('\n')
         print('(LOADER) [Configuration] Set configuration value of {}'.format(varname))
 
 
@@ -68,5 +68,6 @@ async def on_message(message):
     print('(COMMAND) [Handler] Successfully executed command {}. [Execution Time: {}ms; Handler Time: {}ms]'
           .format(cmd, exec_time, handler_time))
 
+print(config)
 
 client.run(config['BOT_TOKEN'])
